@@ -1,42 +1,52 @@
-import Result from "../../components/result";
-
-export default function Result() {
-  const items = [
-    "១ រយៈពេលខ្លីកម្ចី (មិនតិចជាងប្រាំមួយខែ)",
-    "២ រយៈពេលមធ្យមកម្ចី (មិនតិចជាងមួយឆ្នាំ)",
-    "៣ រយៈពេលវែងកម្ចី (មិនតិចជាងបីឆ្នាំ)",
-    "៤ រយៈពេលអចិន្ត្រៃយ៍កម្ចី (មិនមានកាលកំណត់)",
-  ];
-
+export default function ResultPage() {
   return (
     <div className="max-w-4xl mx-auto mt-3 p-6 bg-white rounded shadow space-y-8">
       <h1 className="text-2xl font-bold mb-4 text-center text-[#4361EE]">
         តើកម្រងសំណួរផ្នែកណាមួយដែលមានចំនួនពិន្ទុច្រើនជាងគេ?
       </h1>
 
-      <div className="bg-[#e67e22] p-6 rounded-md shadow-md text-center text-white">
-        <h2 className="text-xl mb-8">ចំនួនពិន្ទុ</h2>
+      <div>
+        <div className="overflow-x-auto">
+          <table className="table-auto w-full border border-gray-300">
+            <thead className="bg-[#E37F0D] text-white">
+              <tr>
+                <th className="border px-4 py-2 text-left w-[5%]">ផ្នែក</th>
+                <th className="border px-4 py-2 text-left  w-[75%]">មុខជំនាញ</th>
+                <th className="border px-4 py-2 text-center w-[15%]">ចំនូនពិន្ទុ</th>
+              </tr>
+            </thead>
 
-        <h1 className="text-2xl font-bold mb-6">Khmer Items</h1>
+            <tbody>
+              {[
+                { part: 1, question: "រចនាម៉ូតសក់ និងសម្ភស្ស (មិនគិតពីកម្រិតសញ្ញបត្រ)", score: 80 },
+                { part: 2, question: "ការថែទាំអគារ (ជាប់ថ្នាក់ទី៩)", score: 70 }, 
+                { part: 3, question: "ការិយាល័យជូរមុខ​ (ជាប់ថ្នាក់ទី៩)", score: 90 },
+                { part: 4, question: "រចនាម៉ូតសក់ និងសម្ភស្ស (មិនគិតពីកម្រិតសញ្ញបត្រ)", score: 80 },
+                { part: 5, question: "ការថែទាំអគារ (ជាប់ថ្នាក់ទី៩)", score: 70 }, 
+                { part: 6, question: "ការិយាល័យជូរមុខ​ (ជាប់ថ្នាក់ទី៩)", score: 90 },
+                { part: 7, question: "រចនាម៉ូតសក់ និងសម្ភស្ស (មិនគិតពីកម្រិតសញ្ញបត្រ)", score: 80 },
+                { part: 8, question: "ការថែទាំអគារ (ជាប់ថ្នាក់ទី៩)", score: 70 }, 
+                { part: 9, question: "ការិយាល័យជូរមុខ​ (ជាប់ថ្នាក់ទី៩)", score: 90 },
+                { part: 10, question: "រចនាម៉ូតសក់ និងសម្ភស្ស (មិនគិតពីកម្រិតសញ្ញបត្រ)", score: 80 },
+                { part: 11, question: "ការថែទាំអគារ (ជាប់ថ្នាក់ទី៩)", score: 70 }, 
+                { part: 12, question: "ការិយាល័យជូរមុខ​ (ជាប់ថ្នាក់ទី៩)", score: 90 },
+                { part: 13, question: "រចនាម៉ូតសក់ និងសម្ភស្ស (មិនគិតពីកម្រិតសញ្ញបត្រ)", score: 80 },
+                { part: 14, question: "ការថែទាំអគារ (ជាប់ថ្នាក់ទី៩)", score: 70 }, 
+                { part: 15, question: "ការិយាល័យជូរមុខ​ (ជាប់ថ្នាក់ទី៩)", score: 90 },
+              ].map((item, index) => (
+                <tr key={index} >
 
-        {/* Display all items with spacing */}
-        <div className="space-y-4">
-          {items.map((item, index) => (
-            <Result key={index} text={item} />
-          ))}
+                  <td className="border px-4 py-2">{item.part}</td>
+                  <td className="border px-4 py-2">{item.question}</td>
+                  <td className="border px-4 py-2 text-center">{item.score}</td>
+                  
+
+                </tr>
+              ))}
+            </tbody>
+          </table>
         </div>
-
-        {/* Optional Extra Notes (uncomment if needed) */}
-        {/*
-        <div className="text-left space-y-3 text-lg mt-6">
-          <p>W: ការអភិវឌ្ឍន៍កម្មវិធីទូរស័ព្ទ (Web mobile app development)</p>
-          <p>A: គណនេយ្យ (Accounting)</p>
-          <p>S: លក់ (Sell)</p>
-          <p>M: ទីផ្សារ (Marketing)</p>
-        </div>
-        */}
       </div>
     </div>
   );
 }
-
