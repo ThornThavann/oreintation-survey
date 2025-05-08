@@ -1,3 +1,6 @@
+import Button from "../../components/button.js";
+import { Link } from "react-router-dom";
+
 export default function Survey() {
   const questions = [
     "តើអ្នកស្គាល់ផ្នែកពិតប្រាកដនៃចំណេះដឹងរបស់អ្នកទេ?",
@@ -18,61 +21,47 @@ export default function Survey() {
 
   return (
     <div className="max-w-4xl mx-auto mt-10 p-6 bg-white rounded shadow space-y-8">
-      {/* Section: Personal Info */}
-      <h2 className="text-2xl font-bold text-center">ព័ត៌មានផ្ទាល់ខ្លួន</h2>
-
-      <div className="space-y-4">
-        <label className="block">
-          <span className="text-gray-700">ឈ្មោះ ៖</span>
-          <input
-            type="text"
-            name="username"
-            className="mt-1 block w-full px-4 py-2 border border-gray-300 rounded-md shadow-sm focus:ring-2 focus:ring-blue-500"
-          />
-        </label>
-
-        <label className="block">
-          <span className="text-gray-700">អាយុ ៖</span>
-          <input
-            type="number"
-            name="age"
-            className="mt-1 block w-full px-4 py-2 border border-gray-300 rounded-md shadow-sm focus:ring-2 focus:ring-blue-500"
-          />
-        </label>
-      </div>
-
-      {/* Section: School */}
+      {/* Section: Note */}
       <div>
-        <h3 className="text-xl font-semibold mb-2">តើអ្នករៀននៅសាលាណា?</h3>
-        <select className="w-full px-4 py-2 border border-gray-300 rounded-md">
-          <option value="external">សាលាខាងក្រៅ</option>
-          <option value="internal">ក្នុងវិទ្យាស្ថាន</option>
-        </select>
-      </div>
+        <h3 className="text-xl font-semibold mb-2" style={{ color: "#4361EE" }}>
+          ចំណាំ
+        </h3>
 
-      {/* Section: Favorite Language */}
-      <div>
-        <h3 className="text-lg font-semibold mb-2">ភាសាដែលអ្នកចូលចិត្ត</h3>
-        <div className="space-y-2">
-          {["HTML", "CSS", "JavaScript"].map((lang) => (
-            <label key={lang} className="flex items-center gap-2">
-              <input type="radio" name="fav_language" value={lang} />
-              <span>{lang}</span>
-            </label>
-          ))}
+        <div className="space-y-9">
+          <p className="leading-8">
+            ១​ មិនចូលចិត្ត​​ (០%)
+            <br />
+            ២ ចូលចិត្តតិចៗ​​ ​​ (​៥០%)
+            <br />
+            ៣ ចូលចិត្ត​ល្មម​​ ​ (៨០%)
+            <br />៤ ចូលចិត្តខ្លាំងណាស់​​ (១០០%)
+          </p>
         </div>
       </div>
 
+      <h2
+        className="text-2xl font-bold text-center"
+        style={{ color: "#4361EE" }}
+      >
+        កម្រងសំណួរស្វែងយល់អំពី ចំណូលចិត្ត
+      </h2>
+
+      <p className=" text-center">
+      ដើម្បីស្វែងយល់អំពីចំណូលចិត្តរបស់អ្នកចំពោះការសិក្សាឬមុខជំនាញតម្រូវឲ្យធ្វើការឆ្លើយចំពោះកម្រងសំណួរចំនួន ១៥ ផ្នែកដែលតំណាងឲ្យអាជីពឬមុខជំនាញសិក្សាដែលមាននៅក្នុងវិទ្យាស្ថាន ប៉េ អេស​ អឺ ។ ដូច្នេះ ដើម្បីអាចជួយឲ្យដឹងថា តើអ្នកមានទំនោរនិងចំណូលចិត្តទៅលើអាជីពឬមុខជំនាញសិក្សាណាជាងគេ។សូមព្យាយាមឆ្លើយនៅកម្រងសំណួរទាំង ១៥ ផ្នែកដោយយកចិត្តទុកដាក់និងឲ្យចប់សព្វគ្រប់ព្រមទាំងស្វែងរក ពិន្ទុសរុបខ្ពស់បំផុត សម្រាប់វាយតម្លៃចំណូលចិត្តរបស់អ្នក។ សូមអរគុណសម្រាប់ការចូលរួមរបស់អ្នក។
+      </p>
+
       {/* Table 1: គណនេយ្យ */}
       <div>
-        <h3 className="text-xl font-bold mb-4">តារាងទី ១៖ គណនេយ្យ</h3>
+        <h3 className="text-xl font-bold mb-4">កម្រងសំណូរផ្នែកទី ១</h3>
         <div className="overflow-x-auto">
           <table className="table-auto w-full border border-gray-300">
             <thead className="bg-blue-700 text-white">
               <tr>
                 <th className="border px-4 py-2 text-left">សំនួរ</th>
                 {[1, 2, 3, 4].map((n) => (
-                  <th key={n} className="border px-4 py-2 text-center">{n}</th>
+                  <th key={n} className="border px-4 py-2 text-center">
+                    {n}
+                  </th>
                 ))}
               </tr>
             </thead>
@@ -94,14 +83,47 @@ export default function Survey() {
 
       {/* Table 2: រដ្ឬាវាល */}
       <div>
-        <h3 className="text-xl font-bold mb-4">តារាងទី ២៖ រដ្ឬាវាល</h3>
+        <h3 className="text-xl font-bold mb-4">កម្រងសំណូរផ្នែកទី​ ២</h3>
         <div className="overflow-x-auto">
           <table className="table-auto w-full border border-gray-300">
             <thead className="bg-blue-700 text-white">
               <tr>
                 <th className="border px-4 py-2 text-left">សំនួរ</th>
                 {[1, 2, 3, 4].map((n) => (
-                  <th key={n} className="border px-4 py-2 text-center">{n}</th>
+                  <th key={n} className="border px-4 py-2 text-center">
+                    {n}
+                  </th>
+                ))}
+              </tr>
+            </thead>
+            <tbody>
+              {questions.map((q, index) => (
+                <tr key={index} className="even:bg-gray-100">
+                  <td className="border px-4 py-2">{q}</td>
+                  {[1, 2, 3, 4].map((n) => (
+                    <td key={n} className="border text-center">
+                      <input type="radio" name={`q2_${index}`} value={n} />
+                    </td>
+                  ))}
+                </tr>
+              ))}
+            </tbody>
+          </table>
+        </div>
+      </div>
+
+       {/* Table ៣: រដ្ឬាវាល */}
+       <div>
+        <h3 className="text-xl font-bold mb-4">កម្រងសំណូរផ្នែកទី​ ៣</h3>
+        <div className="overflow-x-auto">
+          <table className="table-auto w-full border border-gray-300">
+            <thead className="bg-blue-700 text-white">
+              <tr>
+                <th className="border px-4 py-2 text-left">សំនួរ</th>
+                {[1, 2, 3, 4].map((n) => (
+                  <th key={n} className="border px-4 py-2 text-center">
+                    {n}
+                  </th>
                 ))}
               </tr>
             </thead>
@@ -123,9 +145,9 @@ export default function Survey() {
 
       {/* Submit Button */}
       <div className="text-center">
-        <button className="bg-blue-600 text-white px-6 py-2 rounded-md hover:bg-blue-700 transition">
-          ដាក់បញ្ជូន
-        </button>
+        <Link to="/Result">
+          <Button name="បង្ហាញលទ្ធផល" />
+        </Link>
       </div>
     </div>
   );
