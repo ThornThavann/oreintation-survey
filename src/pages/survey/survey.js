@@ -1,77 +1,144 @@
-import Button from "../../components/button.js";
-import { Link } from "react-router-dom";
+import React, { useState, useEffect } from "react";
+import axios from "axios";
 
 export default function Survey() {
-  const questions = [
-    "តើអ្នកស្គាល់ផ្នែកពិតប្រាកដនៃចំណេះដឹងរបស់អ្នកទេ?",
-    "តើអ្នកអាចបែងចែក frontend និង backend បានទេ?",
-    "តើអ្នកអាចពិពណ៌នាអំពីការងាររបស់អ្នក បានទេ?",
-    "តើអ្នកអាចដោះស្រាយបញ្ហាដែលជាបញ្ហាធម្មតាៗ (problem-solving) បានទេ?",
-    "តើអ្នកអាចធ្វើការជាក្រុមជាមួយអ្នកដទៃបានល្អទេ?",
-    "តើអ្នកអាចអានឯកសារបច្ចេកទេសបានទេ?",
-    "តើអ្នកចេះប្រើ Git និង GitHub ទេ?",
-    "តើអ្នកស្គាល់ Framework ឬ Library មួយ?",
-    "តើអ្នកអាចធ្វើការជាមួយ Database បានទេ?",
-    "តើអ្នកអាចអនុវត្តអ្វីដែលបានរៀនបានទេ?",
-    "តើអ្នកចេះរៀបចំគម្រោងកូដរបស់អ្នកឲ្យមានលក្ខណៈល្អទេ?",
-    "តើអ្នកមានចំណេះដឹងអំពី UI/UX ទេ?",
-    "តើអ្នកអាចអភិវឌ្ឍគម្រោងដោយប្រើភាសាដែលបានរៀនទេ?",
-    "តើអ្នកគិតថាអ្នកអាចបន្តការសិក្សាបានទេ?",
-  ];
+  const [student, setStudent] = useState({
+    full_name: "",
+    grade: "",
+    gender: "male",
+    school: "inside",
+  });
+  const [questions, setQuestions] = useState([]);
+  const [ratings, setRatings] = useState({}); // { question_id: rating }
+
+  // Fetch questions from API
+  useEffect(() => {
+    axios.get("http://localhost:3001/api/question/all")
+      .then((res) => {
+        setQuestions(res.data.questions);
+      });
+  }, []);
+
+  // Handle student input
+  const handleInput = (e) => {
+    setStudent({
+      ...student,
+      [e.target.name]: e.target.value,
+    });
+  };
+
+  // Handle rating select
+  const handleRating = (questionId, value) => {
+    setRatings({
+      ...ratings,
+      [questionId]: Number(value),
+    });
+  };
+
+  // Submit form
+  const handleSubmit = async () => {
+    const skillData = Object.entries(ratings).map(([question_id, rating]) => ({
+      question_id: Number(question_id),
+      rating,
+    }));
+
+    const payload = {
+      student,
+      skill: skillData,
+    };
+
+    try {
+      const res = await axios.post("http://localhost:3001/api/survey/submit", payload);
+      alert("Submit success!");
+      // Optionally: redirect to result page with studentId
+    } catch (err) {
+      console.error(err);
+      alert("Submit failed");
+    }
+  };
 
   return (
     <div className="max-w-4xl mx-auto mt-10 p-6 bg-white rounded shadow space-y-8">
-      {/* Section: Note */}
-      <div>
-        <h3 className="text-xl font-semibold mb-2" style={{ color: "#4361EE" }}>
-          ចំណាំ
-        </h3>
+      <h2 className="text-2xl font-bold text-center">Information</h2>
 
-        <div className="space-y-9">
-          <p className="leading-8">
-            ១​ មិនចូលចិត្ត​​ (០%)
-            <br />
-            ២ ចូលចិត្តតិចៗ​​ ​​ (​៥០%)
-            <br />
-            ៣ ចូលចិត្ត​ល្មម​​ ​ (៨០%)
-            <br />៤ ចូលចិត្តខ្លាំងណាស់​​ (១០០%)
-          </p>
-        </div>
+      {/* Student Name */}
+      <div className="space-y-4">
+        <label className="block">
+          <span className="text-gray-700">Student Name</span>
+          <input
+            type="text"
+            name="full_name"
+            onChange={handleInput}
+            className="mt-1 block w-full px-4 py-2 border border-gray-300 rounded-md"
+          />
+        </label>
       </div>
 
-      <h2
-        className="text-2xl font-bold text-center"
-        style={{ color: "#4361EE" }}
-      >
-        កម្រងសំណួរស្វែងយល់អំពី ចំណូលចិត្ត
-      </h2>
+      {/* Grade */}
+      <div className="space-y-4">
+        <label className="block">
+          <span className="text-gray-700">Grade</span>
+          <input
+            type="text"
+            name="grade"
+            onChange={handleInput}
+            className="mt-1 block w-full px-4 py-2 border border-gray-300 rounded-md"
+          />
+        </label>
+      </div>
 
-      <p className=" text-center">
-      ដើម្បីស្វែងយល់អំពីចំណូលចិត្តរបស់អ្នកចំពោះការសិក្សាឬមុខជំនាញតម្រូវឲ្យធ្វើការឆ្លើយចំពោះកម្រងសំណួរចំនួន ១៥ ផ្នែកដែលតំណាងឲ្យអាជីពឬមុខជំនាញសិក្សាដែលមាននៅក្នុងវិទ្យាស្ថាន ប៉េ អេស​ អឺ ។ ដូច្នេះ ដើម្បីអាចជួយឲ្យដឹងថា តើអ្នកមានទំនោរនិងចំណូលចិត្តទៅលើអាជីពឬមុខជំនាញសិក្សាណាជាងគេ។សូមព្យាយាមឆ្លើយនៅកម្រងសំណួរទាំង ១៥ ផ្នែកដោយយកចិត្តទុកដាក់និងឲ្យចប់សព្វគ្រប់ព្រមទាំងស្វែងរក ពិន្ទុសរុបខ្ពស់បំផុត សម្រាប់វាយតម្លៃចំណូលចិត្តរបស់អ្នក។ សូមអរគុណសម្រាប់ការចូលរួមរបស់អ្នក។
-      </p>
-
-      {/* Table 1: គណនេយ្យ */}
+      {/* School */}
       <div>
-        <h3 className="text-xl font-bold mb-4">កម្រងសំណូរផ្នែកទី ១</h3>
+        <h3 className="text-xl font-semibold mb-2">What school are you?</h3>
+        <select
+          name="school"
+          onChange={handleInput}
+          className="w-full px-4 py-2 border border-gray-300 rounded-md"
+        >
+          <option value="outside">Outside</option>
+          <option value="inside">Inside</option>
+        </select>
+      </div>
+
+      {/* Gender */}
+      <div>
+        <h3 className="text-xl font-semibold mb-2">What is your gender</h3>
+        <select
+          name="gender"
+          onChange={handleInput}
+          className="w-full px-4 py-2 border border-gray-300 rounded-md"
+        >
+          <option value="male">Male</option>
+          <option value="female">Female</option>
+          <option value="other">Other</option>
+        </select>
+      </div>
+
+      {/* Skill Questions Table */}
+      <div>
+        <h3 className="text-xl font-bold mb-4">Skill Questions</h3>
         <div className="overflow-x-auto">
           <table className="table-auto w-full border border-gray-300">
             <thead className="bg-blue-700 text-white">
               <tr>
-                <th className="border px-4 py-2 text-left">សំនួរ</th>
-                {[1, 2, 3, 4].map((n) => (
-                  <th key={n} className="border px-4 py-2 text-center">
-                    {n}
-                  </th>
+                <th className="border px-4 py-2 text-left">Question</th>
+                {[1, 2, 3, 4].map((num) => (
+                  <th key={num} className="border px-4 py-2 text-center">{num}</th>
                 ))}
               </tr>
             </thead>
             <tbody>
-              {questions.map((q, index) => (
-                <tr key={index} className="even:bg-gray-100">
-                  <td className="border px-4 py-2">{q}</td>
-                  {[1, 2, 3, 4].map((n) => (
-                    <td key={n} className="border text-center">
-                      <input type="radio" name={`q1_${index}`} value={n} />
+              {questions.map((q) => (
+                <tr key={q.id} className="even:bg-gray-100">
+                  <td className="border px-4 py-2">{q.text}</td>
+                  {[1, 2, 3, 4].map((num) => (
+                    <td key={num} className="border text-center">
+                      <input
+                        type="radio"
+                        name={`q_${q.id}`}
+                        value={num}
+                        onChange={() => handleRating(q.id, num)}
+                      />
                     </td>
                   ))}
                 </tr>
@@ -81,73 +148,14 @@ export default function Survey() {
         </div>
       </div>
 
-      {/* Table 2: រដ្ឬាវាល */}
-      <div>
-        <h3 className="text-xl font-bold mb-4">កម្រងសំណូរផ្នែកទី​ ២</h3>
-        <div className="overflow-x-auto">
-          <table className="table-auto w-full border border-gray-300">
-            <thead className="bg-blue-700 text-white">
-              <tr>
-                <th className="border px-4 py-2 text-left">សំនួរ</th>
-                {[1, 2, 3, 4].map((n) => (
-                  <th key={n} className="border px-4 py-2 text-center">
-                    {n}
-                  </th>
-                ))}
-              </tr>
-            </thead>
-            <tbody>
-              {questions.map((q, index) => (
-                <tr key={index} className="even:bg-gray-100">
-                  <td className="border px-4 py-2">{q}</td>
-                  {[1, 2, 3, 4].map((n) => (
-                    <td key={n} className="border text-center">
-                      <input type="radio" name={`q2_${index}`} value={n} />
-                    </td>
-                  ))}
-                </tr>
-              ))}
-            </tbody>
-          </table>
-        </div>
-      </div>
-
-       {/* Table ៣: រដ្ឬាវាល */}
-       <div>
-        <h3 className="text-xl font-bold mb-4">កម្រងសំណូរផ្នែកទី​ ៣</h3>
-        <div className="overflow-x-auto">
-          <table className="table-auto w-full border border-gray-300">
-            <thead className="bg-blue-700 text-white">
-              <tr>
-                <th className="border px-4 py-2 text-left">សំនួរ</th>
-                {[1, 2, 3, 4].map((n) => (
-                  <th key={n} className="border px-4 py-2 text-center">
-                    {n}
-                  </th>
-                ))}
-              </tr>
-            </thead>
-            <tbody>
-              {questions.map((q, index) => (
-                <tr key={index} className="even:bg-gray-100">
-                  <td className="border px-4 py-2">{q}</td>
-                  {[1, 2, 3, 4].map((n) => (
-                    <td key={n} className="border text-center">
-                      <input type="radio" name={`q2_${index}`} value={n} />
-                    </td>
-                  ))}
-                </tr>
-              ))}
-            </tbody>
-          </table>
-        </div>
-      </div>
-
-      {/* Submit Button */}
+      {/* Submit */}
       <div className="text-center">
-        <Link to="/Result">
-          <Button name="បង្ហាញលទ្ធផល" />
-        </Link>
+        <button
+          onClick={handleSubmit}
+          className="bg-blue-600 text-white px-6 py-2 rounded-md hover:bg-blue-700"
+        >
+          ដាក់បញ្ជូន
+        </button>
       </div>
     </div>
   );
