@@ -11,9 +11,11 @@ import './index.css';
 ReactDOM.createRoot(document.getElementById('root')).render(
   <BrowserRouter>
     <Routes>
-      <Route path="/Survey" element={<Survey />} />
-      <Route path="/" element={<Information />} />
-      <Route path="/Result" element={<Result />} />
+      <Route path="/" element={<Survey />} />
+      <Route path="/home" element={<Information />} />
+      {/* <Route path="/Result" element={<Result />} /> */}
+      <Route path="/result/:studentId" element={<Result />} />
+
     </Routes>
   </BrowserRouter>
 );
