@@ -1,5 +1,9 @@
+
 import React, { useState, useEffect } from "react";
 import axios from "axios";
+import Button from "../../components/button.js";
+import { Link } from "react-router-dom";
+
 
 export default function Survey() {
   const [student, setStudent] = useState({
@@ -59,6 +63,7 @@ export default function Survey() {
 
   return (
     <div className="max-w-4xl mx-auto mt-10 p-6 bg-white rounded shadow space-y-8">
+
       <h2 className="text-2xl font-bold text-center">Information</h2>
 
       {/* Student Name */}
@@ -112,18 +117,23 @@ export default function Survey() {
           <option value="female">Female</option>
           <option value="other">Other</option>
         </select>
+
       </div>
 
       {/* Skill Questions Table */}
       <div>
+
         <h3 className="text-xl font-bold mb-4">Skill Questions</h3>
+
         <div className="overflow-x-auto">
           <table className="table-auto w-full border border-gray-300">
             <thead className="bg-blue-700 text-white">
               <tr>
+
                 <th className="border px-4 py-2 text-left">Question</th>
                 {[1, 2, 3, 4].map((num) => (
                   <th key={num} className="border px-4 py-2 text-center">{num}</th>
+
                 ))}
               </tr>
             </thead>
@@ -150,12 +160,14 @@ export default function Survey() {
 
       {/* Submit */}
       <div className="text-center">
+
         <button
           onClick={handleSubmit}
           className="bg-blue-600 text-white px-6 py-2 rounded-md hover:bg-blue-700"
         >
           ដាក់បញ្ជូន
         </button>
+
       </div>
     </div>
   );
