@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from "react";
 import axios from "axios";
-import { useNavigate } from "react-router-dom";  // <-- import useNavigate
+import { useNavigate } from "react-router-dom";
 
 export default function SkillsWithQuestionsAndRatings() {
   const [skills, setSkills] = useState([]);
@@ -15,7 +15,7 @@ export default function SkillsWithQuestionsAndRatings() {
   const [loading, setLoading] = useState(false);
   const [message, setMessage] = useState("");
 
-  const navigate = useNavigate();  // <-- initialize navigate hook
+  const navigate = useNavigate();
 
   useEffect(() => {
     async function fetchData() {
@@ -57,18 +57,20 @@ export default function SkillsWithQuestionsAndRatings() {
 
   const handleSubmit = async () => {
     setMessage("");
+
     if (!formData.full_name || !formData.grade || !formData.school || !formData.gender) {
       setMessage("Please fill in all your personal details.");
-      return;
+      return null;
     }
 
     if (Object.keys(ratings).length < questions.length) {
       setMessage("Please rate all questions.");
-      return;
+      return null;
     }
 
     try {
       setLoading(true);
+
       const payload = {
         student: {
           full_name: formData.full_name,
@@ -83,150 +85,156 @@ export default function SkillsWithQuestionsAndRatings() {
       };
 
       const response = await axios.post("http://localhost:3000/api/survey/submit", payload);
-      console.log("Survey submitted successfully:", response.data);
       setMessage("Survey submitted successfully!");
-
-      // Clear form & ratings
       setFormData({ full_name: "", grade: "", school: "", gender: "" });
       setRatings({});
-
-      // Navigate to result page with student ID (assuming response.data.studentId contains it)
-      // Adjust property based on your API response shape
-      const studentId = response.data.studentId || response.data.student?.id;
-      if (studentId) {
-        navigate(`/result/${studentId}`);
-      } else {
-        setMessage("Student ID not found in response.");
-      }
+      const studentId = response.data[0]?.studentId;
+      return studentId ?? null;
     } catch (error) {
       console.error("Error submitting survey:", error);
       setMessage("Failed to submit survey. Please try again.");
+      return null;
     } finally {
       setLoading(false);
     }
   };
 
+  const handleClick = async () => {
+    const studentId = await handleSubmit();
+    if (studentId) navigate(`/student-results/${studentId}`);
+  };
+
   return (
-    <div className="max-w-4xl mx-auto mt-10 p-6">
-      <h1 className="text-3xl font-bold mb-6 text-center">
+    <div className="max-w-4xl w-full mx-auto mt-6 p-4 sm:p-6 md:p-8 bg-white rounded-lg shadow-lg">
+      <h1 className="text-3xl sm:text-4xl font-extrabold mb-6 sm:mb-8 text-center text-blue-700">
         Skills and Questions with Ratings
       </h1>
 
       {message && (
         <div
-          className={`mb-4 p-3 rounded ${
-            message.includes("successfully") ? "bg-green-200 text-green-800" : "bg-red-200 text-red-800"
+          className={`mb-6 p-4 rounded-md text-center font-semibold text-sm sm:text-base ${
+            message.includes("successfully")
+              ? "bg-blue-100 text-blue-800 border border-blue-300"
+              : "bg-red-100 text-red-700 border border-red-300"
           }`}
         >
           {message}
         </div>
       )}
 
-      {/* Student Name */}
-      <div className="mb-4">
-        <label className="block mb-1 font-medium text-gray-700">Student Name</label>
-        <input
-          type="text"
-          name="full_name"
-          value={formData.full_name}
-          onChange={handleInput}
-          className="w-full px-4 py-2 border border-gray-300 rounded-md"
-          disabled={loading}
-        />
+      {/* Student Info */}
+      <div className="grid grid-cols-1 md:grid-cols-2 gap-4 sm:gap-6 mb-10">
+        {["full_name", "grade", "school", "gender"].map((field) => (
+          <div key={field}>
+            <label className="block mb-1 sm:mb-2 font-semibold text-gray-700 capitalize" htmlFor={field}>
+              {field.replace("_", " ")}
+            </label>
+            {field === "school" || field === "gender" ? (
+              <select
+                id={field}
+                name={field}
+                value={formData[field]}
+                onChange={handleInput}
+                disabled={loading}
+                className="w-full px-4 py-3 border bg-blue-50 rounded-md focus:outline-none focus:ring-2 focus:ring-blue-500 transition"
+              >
+                {field === "school" ? (
+                  <>
+                    <option value="">Select School</option>
+                    <option value="outside">Outside</option>
+                    <option value="inside">Inside</option>
+                  </>
+                ) : (
+                  <>
+                    <option value="">Select Gender</option>
+                    <option value="male">Male</option>
+                    <option value="female">Female</option>
+                    <option value="other">Other</option>
+                  </>
+                )}
+              </select>
+            ) : (
+              <input
+                id={field}
+                type="text"
+                name={field}
+                value={formData[field]}
+                onChange={handleInput}
+                disabled={loading}
+                className="w-full px-4 py-3 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-blue-500 transition"
+                placeholder={`Enter ${field.replace("_", " ")}`}
+              />
+            )}
+          </div>
+        ))}
       </div>
 
-      {/* Grade */}
-      <div className="mb-4">
-        <label className="block mb-1 font-medium text-gray-700">Grade</label>
-        <input
-          type="text"
-          name="grade"
-          value={formData.grade}
-          onChange={handleInput}
-          className="w-full px-4 py-2 border border-gray-300 rounded-md"
-          disabled={loading}
-        />
-      </div>
-
-      {/* School */}
-      <div className="mb-4">
-        <label className="block mb-1 font-medium text-gray-700">School</label>
-        <select
-          name="school"
-          value={formData.school}
-          onChange={handleInput}
-          className="w-full px-4 py-2 border border-gray-300 rounded-md"
-          disabled={loading}
-        >
-          <option value="">-- Select --</option>
-          <option value="outside">Outside</option>
-          <option value="inside">Inside</option>
-        </select>
-      </div>
-
-      {/* Gender */}
-      <div className="mb-6">
-        <label className="block mb-1 font-medium text-gray-700">Gender</label>
-        <select
-          name="gender"
-          value={formData.gender}
-          onChange={handleInput}
-          className="w-full px-4 py-2 border border-gray-300 rounded-md"
-          disabled={loading}
-        >
-          <option value="">-- Select --</option>
-          <option value="male">Male</option>
-          <option value="female">Female</option>
-          <option value="other">Other</option>
-        </select>
-      </div>
-
-      {/* Skills and Questions */}
+      {/* Questions */}
       {skills.map((skill) => (
-        <div key={skill.id} className="mb-10 border p-4 rounded shadow">
-          <h2 className="text-2xl font-semibold mb-4">{skill.skill_name}</h2>
+        <div
+          key={skill.id}
+          className="mb-10 border border-blue-300 rounded-lg shadow-sm p-4 sm:p-6 hover:shadow-md transition"
+        >
+          <h2 className="text-xl sm:text-2xl font-bold text-blue-700 mb-4">{skill.skill_name}</h2>
 
           {questionsBySkill[skill.id] ? (
-            <table className="w-full border border-gray-300">
-              <thead className="bg-gray-200">
-                <tr>
-                  <th className="border px-4 py-2 text-left">Question</th>
-                  {[1, 2, 3, 4].map((num) => (
-                    <th key={num} className="border px-4 py-2 text-center">{num}</th>
-                  ))}
-                </tr>
-              </thead>
-              <tbody>
-                {questionsBySkill[skill.id].map((q) => (
-                  <tr key={q.id} className="even:bg-gray-100">
-                    <td className="border px-4 py-2">{q.question}</td>
+            <div className="overflow-x-auto">
+              <table className="min-w-full text-sm sm:text-base border border-gray-300 rounded-md">
+                <thead className="bg-blue-100">
+                  <tr>
+                    <th className="border border-blue-300 px-4 py-3 text-left font-semibold text-blue-800">
+                      Question
+                    </th>
                     {[1, 2, 3, 4].map((num) => (
-                      <td key={num} className="border text-center">
-                        <input
-                          type="radio"
-                          name={`rating_${q.id}`}
-                          value={num}
-                          checked={ratings[q.id] === num}
-                          onChange={() => handleRatingChange(q.id, num)}
-                          disabled={loading}
-                        />
-                      </td>
+                      <th
+                        key={num}
+                        className="border border-blue-300 px-4 py-3 text-center font-semibold text-blue-800"
+                      >
+                        {num}
+                      </th>
                     ))}
                   </tr>
-                ))}
-              </tbody>
-            </table>
+                </thead>
+                <tbody>
+                  {questionsBySkill[skill.id].map((q) => (
+                    <tr
+                      key={q.id}
+                      className="bg-blue-50 hover:bg-blue-100 transition"
+                    >
+                      <td className="border border-blue-300 px-4 py-3">{q.question}</td>
+                      {[1, 2, 3, 4].map((num) => (
+                        <td
+                          key={num}
+                          className="border border-blue-300 text-center"
+                        >
+                          <input
+                            type="radio"
+                            name={`rating_${q.id}`}
+                            value={num}
+                            checked={ratings[q.id] === num}
+                            onChange={() => handleRatingChange(q.id, num)}
+                            disabled={loading}
+                            className="cursor-pointer w-4 h-4 sm:w-5 sm:h-5 accent-blue-600"
+                          />
+                        </td>
+                      ))}
+                    </tr>
+                  ))}
+                </tbody>
+              </table>
+            </div>
           ) : (
-            <p className="text-gray-600">No questions available for this skill.</p>
+            <p className="text-blue-600 italic">No questions available for this skill.</p>
           )}
         </div>
       ))}
 
-      {/* Submit Button */}
+      {/* Submit */}
       <button
-        onClick={handleSubmit}
+        onClick={handleClick}
         disabled={loading}
-        className={`mt-4 px-6 py-2 rounded text-white ${loading ? "bg-gray-400 cursor-not-allowed" : "bg-blue-600 hover:bg-blue-700"}`}
+        className={`w-full sm:w-auto block mx-auto mt-6 px-6 py-3 rounded-md font-semibold text-white text-sm sm:text-base transition
+          ${loading ? "bg-blue-300 cursor-not-allowed" : "bg-blue-600 hover:bg-blue-700 focus:outline-none focus:ring-4 focus:ring-blue-400"}`}
       >
         {loading ? "Submitting..." : "Submit"}
       </button>
