@@ -1,5 +1,5 @@
 // main.jsx or index.js
-import React from 'react';
+
 import ReactDOM from 'react-dom/client';
 import { BrowserRouter, Routes, Route } from 'react-router-dom';
 import SkillsWithQuestionsAndRatings from './pages/survey/survey.js';
