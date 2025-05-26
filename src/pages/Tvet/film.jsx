@@ -54,8 +54,8 @@ const FILM = () => {
 
             {/* Table Section */}
             <div className="bg-white shadow-md rounded-xl overflow-hidden">
-              <div className="bg-orange-100 px-6 py-4">
-                <h3 className="text-3xl font-bold text-gray-800">
+              <div className="px-6 py-4">
+                <h3 className="text-3xl font-bold text-gray-800 text-center">
                   ជំនាញទាំងអស់នៅក្នុងសាលាភាពយន្ត
                 </h3>
               </div>

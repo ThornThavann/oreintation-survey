@@ -1,5 +1,4 @@
 import Header from "../../components/header";
-import Footer from "../../components/footer";
 
 const SOH = () => {
   return (
@@ -68,7 +67,7 @@ const SOH = () => {
             {/* Table Section */}
             <div className="bg-gray-50">
               <div className="px-6 py-4">
-                <h3 className="text-2xl font-bold px-2">
+                <h3 className="text-2xl text-center font-bold px-2">
                   ជំនាញទាំងអស់នៅក្នុងសាលាបដិសណ្ឋារកិច្ច
                 </h3>
               </div>
@@ -114,7 +113,6 @@ const SOH = () => {
           </div>
         </div>
       </div>
-      <Footer />
     </>
   );
 };

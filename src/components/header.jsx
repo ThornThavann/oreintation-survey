@@ -45,16 +45,19 @@ const Header = () => {
 
             {/* Dropdown Menu (click only) */}
             <div className="relative">
-            <button
-  className="hover:underline flex items-center gap-2 w-full text-left"
-  onClick={toggleDropdown}
->
-  សាលាជំនាញ
-  <span className={`transform transition-transform duration-200 ${dropdownOpen ? "rotate-180" : ""}`}>
-    ▼
-  </span>
-</button>
-
+              <button
+                className="hover:underline flex items-center gap-2 w-full text-left"
+                onClick={toggleDropdown}
+              >
+                សាលាជំនាញ
+                <span
+                  className={`transform transition-transform duration-200 ${
+                    dropdownOpen ? "rotate-180" : ""
+                  }`}
+                >
+                  ▼
+                </span>
+              </button>
 
               {dropdownOpen && (
                 <div className="absolute top-full left-0 mt-2 w-72 bg-white shadow-lg rounded z-10 text-base text-blue-900 font-khmer border">
@@ -64,11 +67,8 @@ const Header = () => {
                   >
                     វិទ្យាស្ថាន​ ពណិជ្ជសាស្រ្ត
                   </a>
-                  <a
-                    href="/soh"
-                    className="block px-6 py-3 hover:bg-gray-100"
-                  >
-                    វិទ្យាស្ថាន សណ្ឋារកិច្ច
+                  <a href="/soh" className="block px-6 py-3 hover:bg-gray-100">
+                    វិទ្យាស្ថាន បដិសណ្ឋារកិច្ច
                   </a>
                   <a
                     href="/mechanic"
@@ -82,13 +82,9 @@ const Header = () => {
                   >
                     វិទ្យាស្ថាន​ មេកានិក
                   </a>
-                  <a
-                    href="/film"
-                    className="block px-6 py-3 hover:bg-gray-100"
-                  >
+                  <a href="/film" className="block px-6 py-3 hover:bg-gray-100">
                     វិទ្យាស្ថាន​ ភាពយន្ត
                   </a>
-                  
                 </div>
               )}
             </div>
