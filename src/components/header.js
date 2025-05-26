@@ -16,7 +16,7 @@ const Header = () => {
       <div className="bg-blue-900 py-4"></div>
 
       {/* Navbar */}
-      <nav className="bg-white text-white px-4 sm:px-6 md:px-10 py-3 max-w-screen-xl mx-auto">
+      <nav className="bg-white text-white px-4 sm:px-6 md:px-10 py-3 max-w-screen-2xl mx-auto">
         <div className="flex justify-between items-center">
           {/* Logo */}
           <img
@@ -88,6 +88,7 @@ const Header = () => {
                   >
                     វិទ្យាស្ថាន​ ភាពយន្ត
                   </a>
+                  
                 </div>
               )}
             </div>
@@ -103,6 +104,12 @@ const Header = () => {
               className="text-orange-700 hover:underline block"
             >
               ព៍ត៌មានបន្ថែម
+            </a>
+            <a
+              href="/skillwithquestionandratings"
+              className="text-orange-700 hover:underline block"
+            >
+              ស្តង់មតិ
             </a>
           </div>
         </div>
