@@ -30,48 +30,70 @@ const Header = () => {
             menuOpen ? "flex" : "hidden"
           } flex-col md:flex md:flex-row md:justify-between md:items-center gap-4 md:gap-10 mt-4 md:mt-0 text-sm`}
         >
-          <a href="/about" className="hover:underline text-blue-900 font-semibold font-khmer">
+          <a
+            href="/about"
+            className="hover:underline text-blue-900 font-semibold font-khmer"
+          >
             ទំព័រដើម
           </a>
 
           {/* Dropdown */}
           <div className="group relative">
-            <button className="hover:underline text-blue-900 font-semibold font-khmer">សាលាជំនាញ</button>
+            <button className="hover:underline text-blue-900 font-semibold font-khmer">
+              សាលាជំនាញ
+            </button>
             <div className="hidden group-hover:block absolute top-full left-0 mt-2 w-48 bg-white text-black shadow-lg rounded z-10">
               <a
-                href="/salon"
+                href="/"
                 className="block px-5 py-2 hover:bg-gray-100 text-blue-900 font-semibold font-khmer"
               >
-                សាលា សាឡន
+                វិទ្យាស្ថាន​ ពណិជ្ជសាស្រ្ត
               </a>
               <a
                 href="/business"
                 className="block px-5 py-2 hover:bg-gray-100 text-blue-900 font-semibold font-khmer"
               >
-                សាលា ពណិជ្ជសាស្រ្ត
+                វិទ្យាស្ថាន សណ្ឋារកិច្ច
               </a>
               <a
                 href="/mechanic"
                 className="block px-5 py-2 hover:bg-gray-100 text-blue-900 font-semibold font-khmer"
               >
-                សាលា មេកានិក
+                វិទ្យាស្ថាន​ សំណង់
               </a>
               <a
                 href="/construction"
                 className="block px-5 py-2 hover:bg-gray-100 text-blue-900 font-semibold font-khmer"
               >
-                សាលា សំណង់
+                 វិទ្យាស្ថាន​ មេកានិក
               </a>
               <a
                 href="/shortcourse"
                 className="block px-5 py-2 hover:bg-gray-100 text-blue-900 font-semibold font-khmer"
               >
-                សាលា ជំនាញវគ្គខ្លី
+                 វិទ្យាស្ថាន​ ភាពយន្ត
               </a>
             </div>
           </div>
 
-          <a href="/account" className= "text-orange-700 font-semibold font-khmer py-1">
+           <a
+            href="/account"
+            className=" text-blue-900 font-semibold font-khmer py-1"
+          >
+            ជំនាញវគ្គខ្លី
+          </a>
+
+            <a
+            href="/account"
+            className=" text-blue-900 font-semibold font-khmer py-1"
+          >
+            ថ្នាក់ឆ្នាំសិក្សាមូលដ្ឋាន
+          </a>
+
+          <a
+            href="/account"
+            className="text-orange-700 font-semibold font-khmer py-1"
+          >
             ព៍ត៌មានបន្ថែម
           </a>
         </div>
@@ -85,7 +107,6 @@ const Header = () => {
           className="w-full h-[300px] md:h-[400px] object-cover"
         />
       </div>
-
 
       {/* <div className="bg-blue-900 text-white py-2 px-2 text-start text-sm">
         អំពីប៉េអេសអឺ
