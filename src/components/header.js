@@ -44,31 +44,31 @@ const Header = () => {
             </button>
             <div className="hidden group-hover:block absolute top-full left-0 mt-2 w-48 bg-white text-black shadow-lg rounded z-10">
               <a
-                href="/"
+                href="/sob"
                 className="block px-5 py-2 hover:bg-gray-100 text-blue-900 font-semibold font-khmer"
               >
-                វិទ្យាស្ថាន​ ពណិជ្ជសាស្រ្ត
+                វិទ្យាស្ថាន​ ពាណិជ្ជសាស្រ្ត
               </a>
               <a
-                href="/business"
+                href="/soh"
                 className="block px-5 py-2 hover:bg-gray-100 text-blue-900 font-semibold font-khmer"
               >
                 វិទ្យាស្ថាន សណ្ឋារកិច្ច
               </a>
               <a
-                href="/mechanic"
+                href="/soc"
                 className="block px-5 py-2 hover:bg-gray-100 text-blue-900 font-semibold font-khmer"
               >
                 វិទ្យាស្ថាន​ សំណង់
               </a>
               <a
-                href="/construction"
+                href="/som"
                 className="block px-5 py-2 hover:bg-gray-100 text-blue-900 font-semibold font-khmer"
               >
                  វិទ្យាស្ថាន​ មេកានិក
               </a>
               <a
-                href="/shortcourse"
+                href="/film"
                 className="block px-5 py-2 hover:bg-gray-100 text-blue-900 font-semibold font-khmer"
               >
                  វិទ្យាស្ថាន​ ភាពយន្ត
