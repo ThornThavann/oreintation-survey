@@ -83,28 +83,27 @@ export default function Home() {
           {/* LEFT SIDE */}
           <div className="space-y-10">
             <h2 className="text-3xl font-bold text-blue-900 leading-snug">
-              កម្មវិធីបណ្តុះបណ្តាលជំនាញវិជ្ជាជីវៈ
+            កម្មវិធីបណ្តុះបណ្តាលជំនាញរបស់វិទ្យាស្ថាន ប៉េ អេស អឺ
             </h2>
 
             {/* Blue Box */}
             <div className="bg-blue-900 text-white p-8 rounded shadow-md">
               <p className="font-semibold mb-5 text-3xl">
-                វិជ្ជាជីវៈបណ្តុះបណ្តាលជាចម្បង
+              វិស័យកំពុងបណ្តុះបណ្តាលខាងក្នុងវិទ្យាស្ថាន៖
               </p>
               <ul className="list-disc list-inside space-y-3 text-2xl">
-                <li>ភោជនីយដ្ឋាន</li>
-                <li>លក់ជ្រៅ</li>
+                <li>ពាណិជ្ជសាស្ត្រ</li>
+                <li>សណ្ឌារកិច្ច</li>
                 <li>សំណង់</li>
                 <li>មេកានិច</li>
-                <li>ពាណិជ្ជកម្ម</li>
+                <li>ភាពយន្ត</li>
               </ul>
             </div>
 
             {/* Paperclip-style Box */}
             <div className="bg-white border-l-4 border-blue-500 p-8 rounded shadow-md">
               <p className="text-2xl text-gray-700 leading-relaxed">
-                ការបណ្តុះបណ្តាលត្រូវបានរៀបចំដោយការសហការណាមួយរវាងគ្រូ និងសហគ្រាស។
-              </p>
+              កម្មវិធីបណ្តុះបណ្តាលជាមួយសាលាខាងក្រៅដែលមានស្ទើគ្រប់វិស័យ            </p>
             </div>
           </div>
 
@@ -118,9 +117,9 @@ export default function Home() {
 
             <div className="bg-red-700 text-white p-8 rounded shadow">
               <p className="text-2xl leading-snug">
-                ការពិពណ៌នៈថ្នាក់បណ្តុះបណ្តាល៖
-                <br />• ឆ្នាំទី១: មូលដ្ឋាន (Theory)
-                <br />• ឆ្នាំទី២: ពេញលេញ (Practical)
+              កម្មវិធីបណ្តុះបណ្តាលមានរយៈពេល
+                <br />- ៤ ទៅ ៧ ខែ (វគ្គខ្លី)
+                <br />- ២ ទៅ ២.៥ ឆ្នាំ (វគ្គវែង)
               </p>
             </div>
           </div>

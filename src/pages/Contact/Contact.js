@@ -48,7 +48,9 @@ export default function Contact() {
 
           {/* ID Card Info */}
           <div className="bg-blue-900 text-white p-4 rounded-md flex items-center space-x-4">
-            <div className="text-4xl" role="img" aria-label="ID Card">🪪</div>
+            <div className="text-4xl" role="img" aria-label="ID Card">
+              🪪
+            </div>
             <div>
               <h3 className="font-semibold">ការចុះឈ្មោះចូលរៀន៖</h3>
               <p>- ចុះឈ្មោះដើមខែ១ឆ្នាំ</p>
@@ -85,61 +87,73 @@ export default function Contact() {
         {/* Innovation and Life Skills Section */}
         <section className="space-y-6 mt-10">
           <h2 className="text-3xl font-bold border-b-4 border-orange-500 w-fit">
-            ការច្នៃប្រឌិតសាលាបណ្តុះបណ្តាល និងជីវិតសាស្រ្ត
+            ការទទួលស្គាល់លើការបណ្តុះបណ្តាល និងឳកាស អំពីក្របខណ្ឌគុណវុឌ្ឍជាតិ{" "}
           </h2>
           <h3 className="text-blue-900 font-semibold">
-            អង្គភាពសាលាពុម្ពបណ្តុះបណ្តាល និងជីវិតសាស្រ្ត
+            បណ្តុះបណ្តាលបច្ចេកទេស និងវិជ្ជាជីវៈ
           </h3>
 
           {/* Blue Box Grid */}
           <div className="bg-blue-900 text-white p-6 rounded-md grid grid-cols-2 md:grid-cols-4 gap-4">
             <div>
-              <p className="font-semibold">វិញ្ញាសាបឋមសិក្សា</p>
-              <p>ថ្នាក់ទី១</p>
+              <p className="font-semibold">វិញ្ញាបនបត្រវិជ្ជាជីវៈ</p>
             </div>
             <div>
-              <p className="font-semibold">សិក្សាបឋមសិក្សា និងវិញ្ញាសា</p>
-              <p>ថ្នាក់ទី២</p>
+              <p className="font-semibold">
+                សញ្ញាបត្របច្ចេកទេស និងវិជ្ជាជីវៈ​១
+              </p>
             </div>
             <div>
-              <p className="font-semibold">សិក្សាបឋមសិក្សា និងវិញ្ញាសា</p>
-              <p>ថ្នាក់ទី៣</p>
+              <p className="font-semibold">
+                សញ្ញាបត្របច្ចេកទេស និងវិជ្ជាជីវៈ​២
+              </p>
             </div>
             <div>
-              <p className="font-semibold">សិក្សាបឋមសិក្សា</p>
-              <p>ថ្នាក់ទី៤</p>
+              <p className="font-semibold">
+                សញ្ញាបត្របច្ចេកទេស និងវិជ្ជាជីវៈ​៣
+              </p>
             </div>
             <div>
-              <p className="font-semibold">សិក្សាបឋមសិក្សា</p>
-              <p>ជំនាញបច្ចេកទេស</p>
+              <p className="font-semibold">សញ្ញាបត្រជាន់ខ្ពស់ បច្ចេកទេស</p>
             </div>
             <div>
-              <p className="font-semibold">បច្ចេកទេស</p>
-              <p>បច្ចុប្បន្ន</p>
+              <p className="font-semibold">បរិញ្ញាបត្របច្ចេកវិទ្យា</p>
+            </div>
+            <div>
+              <p className="font-semibold">បរិញ្ញាបត្រជាន់ខ្ពស់បច្ចេកវិទ្យា</p>
+            </div>
+            <div>
+              <p className="font-semibold">បណ្ឌិតបច្ចេកវិទ្យា</p>
             </div>
           </div>
 
           {/* Light Blue Box Grid */}
+          <h3 className="text-blue-900 font-semibold">
+          ចំណេះដឹងទូទៅ          </h3>
           <div className="bg-cyan-100 text-gray-800 p-6 rounded-md grid grid-cols-2 md:grid-cols-4 gap-4">
             <div>
-              <p className="font-semibold">សមមូល</p>
-              <p>លក្ខខណ្ឌទី១០</p>
+              <p className="font-semibold">សមមូលថ្នាក់ទី៩</p>
             </div>
             <div>
-              <p className="font-semibold">សមមូល</p>
-              <p>លក្ខខណ្ឌទី១១</p>
+              <p className="font-semibold">សមមូលថ្នាក់ទី១០</p>
             </div>
             <div>
-              <p className="font-semibold">សមមូល</p>
-              <p>លក្ខខណ្ឌទី១២</p>
+              <p className="font-semibold">សមមូលថ្នាក់ទី១១</p>
             </div>
             <div>
-              <p className="font-semibold">សិក្សារក្សា</p>
-              <p>បច្ចេកទេស</p>
+              <p className="font-semibold">សមមូលថ្នាក់ទី១២</p>
             </div>
             <div>
-              <p className="font-semibold">អនុវិទ្យាល័យ</p>
-              <p>បច្ចេកទេស</p>
+              <p className="font-semibold">បរិញ្ញាបត្ររង</p>
+            </div>
+            <div>
+              <p className="font-semibold">បរិញ្ញាបត្រ</p>
+            </div>
+            <div>
+              <p className="font-semibold">អនុបណ្ឌិត</p>
+            </div>
+            <div>
+              <p className="font-semibold">បណ្ឌិត</p>
             </div>
           </div>
         </section>

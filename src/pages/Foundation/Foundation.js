@@ -6,7 +6,7 @@ export default function Foundation() {
     <>
       <Header />
       <div className="bg-gray-50 min-h-screen px-6 py-8">
-        <div className="max-w-4xl mx-auto text-justify text-2xl">
+        <div className="max-w-7xl mx-auto text-justify text-2xl">
           <h1 className="text-3xl font-bold text-blue-800 mb-4">
             សូមស្វាគមន៍មកកាន់ថ្នាក់ឆ្នាំសិក្សាមូលដ្ឋានរបស់យើង
           </h1>

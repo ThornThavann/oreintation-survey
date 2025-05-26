@@ -14,63 +14,51 @@ export default function ShortTranning() {
       <Header />
       <div className="px-4 py-8 max-w-screen-xl mx-auto short-tranning font-sans leading-relaxed text-sm text-gray-800">
         <h1 className="text-2xl lg:text-4xl font-bold text-blue-900 mb-8">
-          កម្មវិធីវិជ្ជាជីវៈ និងការងារ៖ ហាត់ប្រាណជល់ជាក់
-        </h1>
+        ជម្រើសមុខជំនាញ និងរយៈពេលបណ្តុះបណ្តាលសម្រាប់ជំនាញវគ្គខ្លី        </h1>
 
         <div className="grid grid-cols-2 gap-8">
           {/* 1 */}
           <div>
             <FaCut className="text-blue-900 w-12 h-12 mb-2" />
-            <p className="text-3xl font-bold text-blue-900">ជាងមាត់សក់</p>
+            <p className="text-3xl font-bold text-blue-900">រចនាម៉ូតសក់</p>
             <p className="text-2xl text-gray-700 leading-relaxed">
-              សិក្សារយៈពេល ១ឆ្នាំ (ជាស្រីៗ និងអតីតសិស្សសាលា ១២ឆ្នាំ; មានទីតាំងសិក្សាផ្ទាល់)
-            </p>
+            សិក្សារយៈពេល៧ខែ (៦ខែទ្រឹស្តី និងអនុវត្តក្នុងសាលា ១ខែចុះហាត់ការក្នុងក្រុមហ៊ុន)            </p>
           </div>
 
           {/* 2 */}
           <div>
             <FaUtensils className="text-blue-900 w-12 h-12 mb-2" />
-            <p className="text-3xl font-bold text-blue-900">ចុងភៅធំ</p>
+            <p className="text-3xl font-bold text-blue-900">ចម្អិនម្ហូប</p>
             <p className="text-2xl text-gray-700 leading-relaxed">
-              សិក្សារយៈពេល ១ឆ្នាំ (ប្រុសស្រីទាំងអស់; មានទីតាំងសិក្សាផ្ទាល់)
-            </p>
+            សិក្សារយៈពេល៤ខែ (ទ្រឹស្តី និងអនុវត្តក្នុងសាលា)            </p>
           </div>
 
           {/* 3 */}
           <div>
             <FaPaintBrush className="text-blue-900 w-12 h-12 mb-2" />
-            <p className="text-3xl font-bold text-blue-900">សេវាកម្មសោភណភាព</p>
+            <p className="text-3xl font-bold text-blue-900">សេវាកម្មសម្អាងកាយ (មុខ និងក្រចក)</p>
             <p className="text-2xl text-gray-700 leading-relaxed">
-              សិក្សារយៈពេល ១ឆ្នាំ (ជាស្រីៗ; មានទីតាំងសិក្សាផ្ទាល់)
-            </p>
+            សិក្សារយៈពេល៧ខែ (៦ខែទ្រឹស្តី និងអនុវត្តក្នុងសាលា ១ខែចុះហាត់ការក្នុងក្រុមហ៊ុន)            </p>
           </div>
 
           {/* 4 */}
           <div>
             <FaSoap className="text-blue-900 w-12 h-12 mb-2" />
-            <p className="text-3xl font-bold text-blue-900">ជាងម៉ូតូ និងជាងឥន្ទនៈ</p>
+            <p className="text-3xl font-bold text-blue-900">ឆុងកាហ្វេ និងដុតនំ</p>
             <p className="text-2xl text-gray-700 leading-relaxed">
-              សិក្សារយៈពេល ១ឆ្នាំ (ប្រុសស្រីទាំងអស់; មានទីតាំងសិក្សាផ្ទាល់)
-            </p>
+            សិក្សារយៈពេល៤ខែ (ទ្រឹស្តី និងអនុវត្តក្នុងសាលា)            </p>
           </div>
 
           {/* 5 */}
           <div>
             <FaGraduationCap className="text-blue-900 w-12 h-12 mb-2" />
-            <p className="text-3xl font-bold text-blue-900">ការិយាល័យ</p>
+            <p className="text-3xl font-bold text-blue-900">គេហកិច្ច</p>
             <p className="text-2xl text-gray-700 leading-relaxed">
-              សិក្សារយៈពេល ១ឆ្នាំ (ប្រុសស្រីទាំងអស់; មានការសិក្សានៅកន្លែងធ្វើការ និងថ្នាក់សិក្សា)
-            </p>
+            សិក្សារយៈពេល៧ខែ (៤ខែទ្រឹស្តី និងអនុវត្តក្នុងសាលា ៣ខែចុះហាត់ការក្នុងក្រុមហ៊ុន)            </p>
           </div>
 
           {/* 6 */}
-          <div>
-            <FaGraduationCap className="text-blue-900 w-12 h-12 mb-2" />
-            <p className="text-3xl font-bold text-blue-900">គណនេយ្យ</p>
-            <p className="text-2xl text-gray-700 leading-relaxed">
-              សិក្សារយៈពេល ១ឆ្នាំ (ប្រុសស្រីទាំងអស់; មានទីតាំងសិក្សាផ្ទាល់)
-            </p>
-          </div>
+          
         </div>
 
         <div className="mt-10 flex gap-4 justify-center">
