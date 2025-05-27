@@ -1,5 +1,6 @@
 import React from "react";
 import Header from "../../components/header";
+import Footer from "../../components/footer";
 
 export default function Foundation() {
   return (
@@ -7,11 +8,11 @@ export default function Foundation() {
       <Header />
       <div className="bg-gray-50 min-h-screen px-6 py-8">
         <div className="max-w-7xl mx-auto text-justify text-2xl">
-          <h1 className="text-3xl font-bold text-blue-800 mb-4">
+          <h1 className="text-lg sm:text-2xl font-bold text-orange-600 text-center mb-2">
             សូមស្វាគមន៍មកកាន់ថ្នាក់ឆ្នាំសិក្សាមូលដ្ឋានរបស់យើង
           </h1>
 
-          <p className="text-gray-700 leading-relaxed mb-6">
+          <p className="text-sm sm:text-lg mb-16   leading-relaxed lg:leading-loose">
             ថ្នាក់ឆ្នាំសិក្សាមូលដ្ឋាន
             គឺជាកម្រិតសិក្សាមួយដែលត្រូវបានរៀបចំឡើងសម្រាប់សិស្សដែលនៅមិនទាន់រួចរាល់ក្នុងការចូលសិក្សាជំនាញ
             ឬសិស្សដែលមានអាយុមិនទាន់គ្រប់លក្ខណៈក្នុងការចូលរៀនជំនាញពិសេសៗ។
@@ -37,33 +38,48 @@ export default function Foundation() {
             ថ្នាក់នេះគឺជាជម្រើសដ៏សមស្របសម្រាប់សិស្សដែលចង់ស្វែងយល់អំពីទិសដៅអនាគតរបស់ខ្លួនមុនធ្វើការជ្រើសរើសជំនាញ។
           </p>
 
-          <div className="mb-8 text-center">
-            <p className="text-gray-700">
-              <span className="text-orange-500 font-semibold">
-                មុខវិជ្ជាគោល៖
-              </span>{" "}
-              គណិតវិទ្យា, ភាសាខ្មែរ, គីមីវិទ្យា, ជីវវិទ្យា
-            </p>
-            <p className="text-gray-700">
-              <span className="text-orange-500 font-semibold">
-                មុខវិជ្ជាបន្ថែម៖
-              </span>{" "}
-              ភាសាបរទេស (អង់គ្លេស, ចិន, បារាំង), កុំព្យូទ័រ, ជំនាញទន់
-              និងកម្មវិធីតម្រង់ទិស
-            </p>
-            <p className="text-gray-700">
-              <span className="text-orange-500 font-semibold">ផ្សេងៗ៖</span>{" "}
-              ចំណេះដឹងទូទៅ និងអាស៊ាន, សកម្មភាពផ្សេងៗ, សិល្បៈ, បណ្ណាល័យ និងកីឡា
-            </p>
-            <p className="text-gray-700">
-              <span className="text-orange-500 font-semibold">
-                លក្ខខណ្ឌចូលរៀន (FSD):
-              </span>{" "}
-              ត្រូវមានអាយុ ១៥ ឆ្នាំឡើង, សញ្ញាបត្រថ្នាក់ទី ៩ ឬស្ពានចម្លង,
-              ជាសិស្សមកពីគ្រួសារ ប៉េ អេស អឺ
-            </p>
-            <p className="text-gray-700">ត្រូវធ្វើតេស្តមុនពេលចូលរៀន</p>
-          </div>
+         <div className="space-y-5 text-gray-700">
+      {/* Core Subjects */}
+      <div className="bg-blue-50 p-4 rounded-lg border-l-4 border-orange-500">
+        <h4 className="font-semibold text-orange-600 text-lg mb-2">
+          មុខវិជ្ជាគោល
+        </h4>
+        <p className="pl-2 text-sm">គណិតវិទ្យា, ភាសាខ្មែរ, គីមីវិទ្យា, ជីវវិទ្យា</p>
+      </div>
+      
+      {/* Additional Subjects */}
+      <div className="bg-blue-50 p-4 rounded-lg border-l-4 border-orange-500">
+        <h1 className="font-semibold text-orange-600 text-lg mb-2">
+          មុខវិជ្ជាបន្ថែម
+        </h1>
+        <p className="pl-2  text-sm">
+          ភាសាបរទេស (អង់គ្លេស, ចិន, បារាំង), កុំព្យូទ័រ, ជំនាញទន់ និងកម្មវិធីតម្រង់ទិស
+        </p>
+      </div>
+      
+      {/* Other Activities */}
+      <div className="bg-blue-50 p-4 rounded-lg border-l-4 border-orange-500">
+        <h1 className="font-semibold text-orange-600 text-lg mb-2">
+          ផ្សេងៗ
+        </h1>
+        <p className="pl-2  text-sm">
+          ចំណេះដឹងទូទៅ និងអាស៊ាន, សកម្មភាពផ្សេងៗ, សិល្បៈ, បណ្ណាល័យ និងកីឡា
+        </p>
+      </div>
+      
+      {/* Admission Requirements */}
+      <div className="bg-blue-50 p-4 rounded-lg border-l-4 border-orange-500">
+        <h1 className="font-semibold text-orange-600 text-lg mb-2">
+          លក្ខខណ្ឌចូលរៀន (FSD)
+        </h1>
+        <ul className="pl-2 space-y-2 list-disc list-inside  text-sm">
+          <li>ត្រូវមានអាយុ ១៥ ឆ្នាំឡើង</li>
+          <li>សញ្ញាបត្រថ្នាក់ទី ៩ ឬស្ពានចម្លង</li>
+          <li>ជាសិស្សមកពីគ្រួសារ ប៉េ អេស អឺ</li>
+          <li>ត្រូវធ្វើតេស្តមុនពេលចូលរៀន</li>
+        </ul>
+      </div>
+    </div>
 
           <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-4 mt-6">
             <img
@@ -84,6 +100,7 @@ export default function Foundation() {
           </div>
         </div>
       </div>
+      <Footer />
     </>
   );
 }

@@ -6,105 +6,69 @@ const Header = () => {
   const [menuOpen, setMenuOpen] = useState(false);
   const [dropdownOpen, setDropdownOpen] = useState(false);
 
-  const toggleDropdown = () => {
-    setDropdownOpen(!dropdownOpen);
-  };
+  const toggleDropdown = () => setDropdownOpen(!dropdownOpen);
 
   return (
     <div className="font-sans">
-      {/* Top Blue Bar */}
-      <div className="bg-blue-900 py-4"></div>
+      {/* Top Bar */}
+      <div className="bg-blue-900 h-4 sm:h-5"></div>
 
       {/* Navbar */}
-      <nav className="bg-white text-white px-4 sm:px-6 md:px-10 py-3 max-w-screen-2xl mx-auto">
-        <div className="flex justify-between items-center">
+      <nav className="bg-white px-4 md:px-10 py-3 shadow-md">
+        <div className="max-w-screen-2xl mx-auto flex items-center justify-between">
           {/* Logo */}
-          <img
-            src={Logo}
-            alt="PSE Logo"
-            className="h-20 sm:h-24 md:h-28 w-auto object-contain"
-          />
+          <img src={Logo} alt="Logo" className="h-12 sm:h-16 md:h-20 w-auto" />
 
-          {/* Hamburger Menu */}
+          {/* Menu Toggle (Mobile) */}
           <button
+            className="md:hidden text-3xl text-blue-900"
             onClick={() => setMenuOpen(!menuOpen)}
-            className="md:hidden text-blue-900 text-3xl focus:outline-none"
           >
             {menuOpen ? "✖" : "☰"}
           </button>
 
-          {/* Menu Items */}
+          {/* Nav Links */}
           <div
-            className={`md:flex items-center gap-12 text-blue-900 text-xl font-semibold font-khmer ${
-              menuOpen ? "block mt-4" : "hidden md:flex"
-            }`}
+            className={`${
+              menuOpen ? "block" : "hidden"
+            } absolute md:static top-20 left-0 w-full md:w-auto bg-white md:flex flex-col md:flex-row items-start md:items-center z-50 px-4 md:px-0 gap-4 md:gap-10 py-4 md:py-0 text-blue-900 font-khmer text-lg font-semibold`}
           >
-            <a href="/" className="hover:underline block">
+            <a href="/" className="hover:underline w-full md:w-auto">
               ទំព័រដើម
             </a>
 
-            {/* Dropdown Menu (click only) */}
-            <div className="relative">
+            {/* Dropdown */}
+            <div className="relative w-full md:w-auto">
               <button
-                className="hover:underline flex items-center gap-2 w-full text-left"
+                className="hover:underline flex justify-between md:items-center w-full md:w-auto"
                 onClick={toggleDropdown}
               >
                 សាលាជំនាញ
-                <span
-                  className={`transform transition-transform duration-200 ${
-                    dropdownOpen ? "rotate-180" : ""
-                  }`}
-                >
+                <span className={`ml-2 ${dropdownOpen ? "rotate-180" : ""}`}>
                   ▼
                 </span>
               </button>
-
               {dropdownOpen && (
-                <div className="absolute top-full left-0 mt-2 w-72 bg-white shadow-lg rounded z-10 text-base text-blue-900 font-khmer border">
-                  <a
-                    href="/business"
-                    className="block px-6 py-3 hover:bg-gray-100"
-                  >
-                    វិទ្យាស្ថាន​ ពណិជ្ជសាស្រ្ត
-                  </a>
-                  <a href="/soh" className="block px-6 py-3 hover:bg-gray-100">
-                    វិទ្យាស្ថាន បដិសណ្ឋារកិច្ច
-                  </a>
-                  <a
-                    href="/mechanic"
-                    className="block px-6 py-3 hover:bg-gray-100"
-                  >
-                    វិទ្យាស្ថាន​ សំណង់
-                  </a>
-                  <a
-                    href="/construction"
-                    className="block px-6 py-3 hover:bg-gray-100"
-                  >
-                    វិទ្យាស្ថាន​ មេកានិក
-                  </a>
-                  <a href="/film" className="block px-6 py-3 hover:bg-gray-100">
-                    វិទ្យាស្ថាន​ ភាពយន្ត
-                  </a>
+                <div className="mt-2 bg-white border shadow-lg rounded w-full md:w-64 absolute md:static z-50 text-base">
+                  <a href="/business" className="block px-4 py-2 hover:bg-gray-100">វិទ្យាស្ថាន​ ពាណិជ្ជសាស្រ្ត</a>
+                  <a href="/soh" className="block px-4 py-2 hover:bg-gray-100">វិទ្យាស្ថាន បដិសណ្ឋារកិច្ច</a>
+                  <a href="/mechanic" className="block px-4 py-2 hover:bg-gray-100">វិទ្យាស្ថាន​ សំណង់</a>
+                  <a href="/construction" className="block px-4 py-2 hover:bg-gray-100">វិទ្យាស្ថាន​ មេកានិក</a>
+                  <a href="/film" className="block px-4 py-2 hover:bg-gray-100">វិទ្យាស្ថាន​ ភាពយន្ត</a>
                 </div>
               )}
             </div>
 
-            <a href="/short-trannig" className="hover:underline block">
+            <a href="/short-trannig" className="hover:underline flex justify-between md:items-center w-full md:w-auto">
               ជំនាញវគ្គខ្លី
             </a>
-            <a href="/foundation" className="hover:underline block">
+            <a href="/foundation" className="hover:underline flex justify-between md:items-center w-full md:w-auto">
               ថ្នាក់ឆ្នាំសិក្សាមូលដ្ឋាន
             </a>
-            <a
-              href="/contact"
-              className="text-orange-700 hover:underline block"
-            >
+            <a href="/contact" className="text-orange-700 hover:underline w-full md:w-auto">
               ព៍ត៌មានបន្ថែម
-            </a>
-            <a
-              href="/skillwithquestionandratings"
-              className="text-orange-700 hover:underline block"
-            >
+            </a> <br />
+            <a href="/skillwithquestionandratings" className="text-orange-700 hover:underline w-full md:w-auto">
               ស្តង់មតិ
             </a>
           </div>
@@ -112,14 +76,14 @@ const Header = () => {
       </nav>
 
       {/* Banner */}
-      <div className="relative w-full">
+      <div className="relative">
         <img
           src={School}
-          alt="PSE Campus"
-          className="w-full h-[300px] sm:h-[400px] md:h-[500px] object-cover object-center"
+          alt="School"
+          className="w-full h-[200px] sm:h-[300px] md:h-[500px] object-cover"
         />
-        <div className="absolute inset-0 bg-black bg-opacity-30 flex justify-center items-center">
-          <h1 className="text-white text-3xl sm:text-4xl md:text-5xl font-bold font-khmer text-center px-4">
+        <div className="absolute inset-0 bg-black bg-opacity-30 flex items-center justify-center">
+          <h1 className="text-white text-2xl sm:text-4xl md:text-5xl font-khmer font-bold text-center px-4">
             មជ្ឈមណ្ឌលបណ្ដុះបណ្ដាលវិជ្ជាជីវៈ PSE
           </h1>
         </div>
