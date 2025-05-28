@@ -2,18 +2,18 @@
 
 import ReactDOM from 'react-dom/client';
 import { BrowserRouter, Routes, Route } from 'react-router-dom';
-import SkillsWithQuestionsAndRatings from './pages/survey/survey.js';
-import SurveyResultPage from './pages/Result/result.js';
-import Home from './pages/Home/home.js';
-import ShortTranning from './pages/ShortTranning/ShortTranning.js';
-import Foundation from './pages/Foundation/Foundation.js';
+import SkillsWithQuestionsAndRatings from './pages/survey/survey.jsx';
+import SurveyResultPage from './pages/Result/result.jsx';
+import Home from './pages/Home/home.jsx';
+import ShortTranning from './pages/ShortTranning/ShortTranning.jsx';
+import Foundation from './pages/Foundation/Foundation.jsx';
 import React from 'react';
-import Contact from './pages/Contact/Contact.js';
-import SOB from './pages/Tvet/sob.js';
-import FILM from './pages/Tvet/film.js';
-import SOC from './pages/Tvet/soc.js';
-import SOM from './pages/Tvet/som.js';
-import SOH from './pages/Tvet/soh.js';
+import Contact from './pages/Contact/Contact.jsx';
+import SOB from './pages/Tvet/sob.jsx';
+import FILM from './pages/Tvet/film.jsx';
+import SOC from './pages/Tvet/soc.jsx';
+import SOM from './pages/Tvet/som.jsx';
+import SOH from './pages/Tvet/soh.jsx';
 import './index.css';
 
 ReactDOM.createRoot(document.getElementById('root')).render(

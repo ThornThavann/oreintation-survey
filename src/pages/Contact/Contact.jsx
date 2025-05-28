@@ -1,66 +1,70 @@
 import React from "react";
 import Header from "../../components/header";
-import { FaPhone, FaFacebook, FaInstagram, FaGlobe } from "react-icons/fa";
+import Footer from "../../components/footer";
+
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+import { faPhone, faGlobe } from "@fortawesome/free-solid-svg-icons";
+import { faFacebook, faInstagram } from "@fortawesome/free-brands-svg-icons";
 
 export default function Contact() {
   return (
     <>
       <Header />
       <div className="px-8 py-10 max-w-7xl mx-auto font-sans text-2xl mb-6">
-        {/* Page 1 Section */}
+        {/* Contact Info Section */}
         <section className="border-orange-500 p-6 rounded-lg shadow-md space-y-6">
-          <h1 className="text-3xl font-bold border-b-4 border-orange-500 w-fit text-orange-800">
+          <h1 className="text-xl sm:text-2xl font-bold border-b-2 border-orange-500 w-fit text-orange-800">
             ព័ត៌មានទំនាក់ទំនង
           </h1>
           <div className="space-y-4 text-2xl text-gray-700">
-            <p className="flex items-center gap-3">
-              <FaPhone className="text-orange-600" />
-              <span>Phone: +855 77 777 175</span>
+            <p className="flex items-center gap-3 text-lg">
+              <FontAwesomeIcon icon={faPhone} className="text-blue-500" />
+              +855 77 777 175
             </p>
-            <p className="flex items-center gap-3">
-              <FaFacebook className="text-blue-600" />
-              <span>Facebook: PSE - POUR UN SOURIRE D’ENFANT-Cambodia</span>
+            <p className="flex items-center gap-3 text-lg">
+              <FontAwesomeIcon icon={faFacebook} className="text-blue-500" />
+              PSE - POUR UN SOURIRE D’ENFANT-Cambodia
             </p>
-            <p className="flex items-center gap-3">
-              <FaInstagram className="text-pink-500" />
-              <span>Instagram: PSE - FRANCE</span>
+            <p className="flex items-center gap-3 text-lg">
+              <FontAwesomeIcon icon={faInstagram} className="text-pink-700" />
+              PSE - FRANCE
             </p>
             <a
               href="https://www.pse.ngo/"
               target="_blank"
               rel="noopener noreferrer"
-              className="flex items-center gap-3 hover:text-orange-600 transition"
+              className="flex items-center gap-3 hover:text-orange-600 transition text-lg"
             >
-              <FaGlobe className="text-green-700" />
-              <span>Website: www.pse.ngo</span>
+              <FontAwesomeIcon icon={faGlobe} className="text-green-500" />
+              <span> www.pse.ngo</span>
             </a>
           </div>
         </section>
 
         {/* Registration Section */}
         <section className="space-y-6 mt-10">
-          <h1 className="text-3xl font-bold border-b-4 border-orange-500 w-fit">
+          <h1 className="text-xl sm:text-xl font-bold  w-fit">
             ការចុះឈ្មោះចូលរៀន
           </h1>
-          <h2 className="text-3xl font-bold text-blue-900">
+          <h2 className="text-lg sm:text-xl font-bold text-blue-900">
             ការចុះឈ្មោះចូលរៀន និងលក្ខខណ្ឌសម្រាប់ដំណើរការ
           </h2>
 
           {/* ID Card Info */}
           <div className="bg-blue-900 text-white p-4 rounded-md flex items-center space-x-4">
-            <div className="text-4xl" role="img" aria-label="ID Card">
+            <div className="text-3xl" role="img" aria-label="ID Card">
               🪪
             </div>
             <div>
-              <h3 className="font-semibold">ការចុះឈ្មោះចូលរៀន៖</h3>
-              <p>- ចុះឈ្មោះដើមខែ១ឆ្នាំ</p>
+              <h3 className="font-semibold text-lg">ការចុះឈ្មោះចូលរៀន៖</h3>
+              <p className="text-sm">- ចុះឈ្មោះដើមខែ១ឆ្នាំ</p>
             </div>
           </div>
 
           {/* Conditions */}
           <div className="bg-orange-500 text-white p-6 rounded-md space-y-4">
-            <h3 className="font-bold">លក្ខខណ្ឌចូលរៀន</h3>
-            <ul className="list-disc list-inside space-y-2">
+            <p className="font-bold text-lg">លក្ខខណ្ឌចូលរៀន</p>
+            <ul className="list-disc list-inside space-y-2 text-sm">
               <li>បញ្ចប់ថ្នាក់​ អនុវិទ្យាល័យ​​ ឬ​ កំពុងសិក្សា (៧,៨,៩)</li>
               <li>បញ្ចប់ថ្នាក់​ វិទ្យាល័យ​​ ឬ​ កំពុងសិក្សា​​ (១០,១១,១២)</li>
               <li>
@@ -86,15 +90,15 @@ export default function Contact() {
 
         {/* Innovation and Life Skills Section */}
         <section className="space-y-6 mt-10">
-          <h2 className="text-3xl font-bold border-b-4 border-orange-500 w-fit">
+          <h2 className="text-lg font-bold w-fit">
             ការទទួលស្គាល់លើការបណ្តុះបណ្តាល និងឳកាស អំពីក្របខណ្ឌគុណវុឌ្ឍជាតិ{" "}
           </h2>
-          <h3 className="text-blue-900 font-semibold">
+          <h3 className="text-blue-900 font-semibold text-lg">
             បណ្តុះបណ្តាលបច្ចេកទេស និងវិជ្ជាជីវៈ
           </h3>
 
           {/* Blue Box Grid */}
-          <div className="bg-blue-900 text-white p-6 rounded-md grid grid-cols-2 md:grid-cols-4 gap-4">
+          <div className="bg-blue-900 text-white p-6 rounded-md grid grid-cols-2 md:grid-cols-4 gap-4 text-sm">
             <div>
               <p className="font-semibold">វិញ្ញាបនបត្រវិជ្ជាជីវៈ</p>
             </div>
@@ -128,9 +132,8 @@ export default function Contact() {
           </div>
 
           {/* Light Blue Box Grid */}
-          <h3 className="text-blue-900 font-semibold">
-          ចំណេះដឹងទូទៅ          </h3>
-          <div className="bg-cyan-100 text-gray-800 p-6 rounded-md grid grid-cols-2 md:grid-cols-4 gap-4">
+          <h3 className="text-blue-900 font-bold text-lg ">ចំណេះដឹងទូទៅ</h3>
+          <div className="text-sm bg-cyan-100 text-gray-800 p-6 rounded-md grid grid-cols-2 md:grid-cols-4 gap-4">
             <div>
               <p className="font-semibold">សមមូលថ្នាក់ទី៩</p>
             </div>
@@ -158,6 +161,7 @@ export default function Contact() {
           </div>
         </section>
       </div>
+      <Footer />
     </>
   );
 }
