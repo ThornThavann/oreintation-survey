@@ -1,23 +1,32 @@
+# Use the official lightweight Node.js image
+FROM node:18
+
 # Set working directory
 WORKDIR /usr/src/app
 
-# Copy package files
+# Copy package.json and package-lock.json
 COPY package*.json ./
 
 # Install dependencies
 RUN npm install
 
-# Copy app source code
+# Copy the rest of the app's code
 COPY . .
 
-# Build production React app
+# Accept build argument for React
+ARG REACT_APP_BASE_URL
+
+# Set environment variable so React can use it during build
+ENV REACT_APP_BASE_URL=$REACT_APP_BASE_URL
+
+# Build the React app
 RUN npm run build
 
-# Install serve globally
+# Use a lightweight web server to serve the production build
 RUN npm install -g serve
 
-# Expose the port you want (3310)
-EXPOSE 3000
-
-# Serve the app on port 3310
+# Command to run when the container starts
 CMD ["serve", "-s", "build", "-l", "3000"]
+
+# Expose the port the app runs on
+EXPOSE 3000
