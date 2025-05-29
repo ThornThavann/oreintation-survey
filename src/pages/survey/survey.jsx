@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from "react";
 import axios from "axios";
 import { useNavigate } from "react-router-dom";
-
+import Header from "../../components/header";
 export default function SkillsWithQuestionsAndRatings() {
   const [skills, setSkills] = useState([]);
   const [questions, setQuestions] = useState([]);
@@ -14,14 +14,15 @@ export default function SkillsWithQuestionsAndRatings() {
   });
   const [loading, setLoading] = useState(false);
   const [message, setMessage] = useState("");
+  const apiUrl =process.env.REACT_APP_BASE_URL;
 
   const navigate = useNavigate();
 
   useEffect(() => {
     async function fetchData() {
       try {
-        const skillRes = await axios.get( `${process.env.REACT_APP_BASE_URL}api/skills/alls`);
-        const questionRes = await axios.get(`${process.env.REACT_APP_BASE_URL}api/skills/question`);
+        const skillRes = await axios.get( `${apiUrl}api/skills/alls`);
+        const questionRes = await axios.get(`${apiUrl}api/skills/question`);
 
         setSkills(skillRes.data.skills);
         setQuestions(questionRes.data.questions);
@@ -105,6 +106,9 @@ export default function SkillsWithQuestionsAndRatings() {
   };
 
   return (
+    <>
+    <Header></Header>
+  
     <div className="max-w-4xl w-full mx-auto mt-6 p-4 sm:p-6 md:p-8 bg-white rounded-lg shadow-lg">
       <h1 className="text-3xl sm:text-4xl font-extrabold mb-6 sm:mb-8 text-center text-blue-700">
         Skills and Questions with Ratings
@@ -140,13 +144,11 @@ export default function SkillsWithQuestionsAndRatings() {
               >
                 {field === "school" ? (
                   <>
-                    <option value="">Select School</option>
                     <option value="outside">Outside</option>
                     <option value="inside">Inside</option>
                   </>
                 ) : (
                   <>
-                    <option value="">Select Gender</option>
                     <option value="male">Male</option>
                     <option value="female">Female</option>
                     <option value="other">Other</option>
@@ -239,6 +241,7 @@ export default function SkillsWithQuestionsAndRatings() {
         {loading ? "Submitting..." : "Submit"}
       </button>
     </div>
+      </>
   );
 }
 
