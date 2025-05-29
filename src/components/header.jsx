@@ -1,12 +1,21 @@
-import { useState } from "react";
+import { useState, useEffect } from "react";
+import { useLocation } from "react-router-dom";
 import Logo from "../image/logo.png";
 import School from "../image/school.jpeg";
 
 const Header = () => {
   const [menuOpen, setMenuOpen] = useState(false);
   const [dropdownOpen, setDropdownOpen] = useState(false);
+  const location = useLocation();
 
   const toggleDropdown = () => setDropdownOpen(!dropdownOpen);
+
+  useEffect(() => {
+    setDropdownOpen(false);
+    setMenuOpen(false);
+  }, [location.pathname]);
+
+  const isActive = (path) => location.pathname === path;
 
   return (
     <div className="font-sans">
@@ -14,7 +23,7 @@ const Header = () => {
       <div className="bg-blue-900 h-4 sm:h-5"></div>
 
       {/* Navbar */}
-      <nav className="bg-white px-4 md:px-10 py-3 shadow-md">
+      <nav className="bg-white px-4 md:px-10 py-3 shadow-md relative z-50">
         <div className="max-w-screen-2xl mx-auto flex items-center justify-between">
           {/* Logo */}
           <img src={Logo} alt="Logo" className="h-12 sm:h-16 md:h-20 w-auto" />
@@ -30,45 +39,60 @@ const Header = () => {
           {/* Nav Links */}
           <div
             className={`${
-              menuOpen ? "block" : "hidden"
-            } absolute md:static top-20 left-0 w-full md:w-auto bg-white md:flex flex-col md:flex-row items-start md:items-center z-50 px-4 md:px-0 gap-4 md:gap-10 py-4 md:py-0 text-blue-900 font-khmer text-lg font-semibold`}
+              menuOpen ? "flex" : "hidden"
+            } flex-col md:flex md:flex-row absolute md:static top-full left-0 w-full bg-white md:w-auto md:bg-transparent z-50 px-4 md:px-0 gap-4 md:gap-10 py-4 md:py-0 text-blue-900 font-khmer text-lg font-semibold`}
           >
-            <a href="/" className="hover:underline w-full md:w-auto">
+            <a
+              href="/"
+              className={`hover:underline w-full md:w-auto ${
+                isActive("/") ? "text-orange-700" : ""
+              }`}
+            >
               ទំព័រដើម
             </a>
 
             {/* Dropdown */}
             <div className="relative w-full md:w-auto">
               <button
-                className="hover:underline flex justify-between md:items-center w-full md:w-auto"
+                className="hover:underline flex justify-between items-center w-full"
                 onClick={toggleDropdown}
               >
                 សាលាជំនាញ
-                <span className={`ml-2 ${dropdownOpen ? "rotate-180" : ""}`}>
+                <span className={`ml-2 transition-transform ${dropdownOpen ? "rotate-180" : ""}`}>
                   ▼
                 </span>
               </button>
               {dropdownOpen && (
-                <div className="mt-2 bg-white border shadow-lg rounded w-full md:w-64 absolute md:static z-50 text-base">
-                  <a href="/business" className="block px-4 py-2 hover:bg-gray-100">វិទ្យាស្ថាន​ ពាណិជ្ជសាស្រ្ត</a>
-                  <a href="/soh" className="block px-4 py-2 hover:bg-gray-100">វិទ្យាស្ថាន បដិសណ្ឋារកិច្ច</a>
-                  <a href="/mechanic" className="block px-4 py-2 hover:bg-gray-100">វិទ្យាស្ថាន​ សំណង់</a>
-                  <a href="/construction" className="block px-4 py-2 hover:bg-gray-100">វិទ្យាស្ថាន​ មេកានិក</a>
-                  <a href="/film" className="block px-4 py-2 hover:bg-gray-100">វិទ្យាស្ថាន​ ភាពយន្ត</a>
+                <div className="mt-2 bg-white border shadow-lg rounded w-full md:w-64 md:absolute left-0 z-50 text-base flex flex-col">
+                  <a href="/business" className={`px-4 py-2 hover:bg-gray-100 ${isActive("/business") ? "text-orange-700 font-bold" : ""}`}>
+                    វិទ្យាស្ថាន​ ពាណិជ្ជសាស្រ្ត
+                  </a>
+                  <a href="/soh" className={`px-4 py-2 hover:bg-gray-100 ${isActive("/soh") ? "text-orange-700 font-bold" : ""}`}>
+                    វិទ្យាស្ថាន បដិសណ្ឋារកិច្ច
+                  </a>
+                  <a href="/mechanic" className={`px-4 py-2 hover:bg-gray-100 ${isActive("/mechanic") ? "text-orange-700 font-bold" : ""}`}>
+                    វិទ្យាស្ថាន​ សំណង់
+                  </a>
+                  <a href="/construction" className={`px-4 py-2 hover:bg-gray-100 ${isActive("/construction") ? "text-orange-700 font-bold" : ""}`}>
+                    វិទ្យាស្ថាន​ មេកានិក
+                  </a>
+                  <a href="/film" className={`px-4 py-2 hover:bg-gray-100 ${isActive("/film") ? "text-orange-700 font-bold" : ""}`}>
+                    វិទ្យាស្ថាន​ ភាពយន្ត
+                  </a>
                 </div>
               )}
             </div>
 
-            <a href="/short-trannig" className="hover:underline flex justify-between md:items-center w-full md:w-auto">
+            <a href="/short-trannig" className={`hover:underline w-full md:w-auto ${isActive("/short-trannig") ? "text-orange-700" : ""}`}>
               ជំនាញវគ្គខ្លី
             </a>
-            <a href="/foundation" className="hover:underline flex justify-between md:items-center w-full md:w-auto">
+            <a href="/foundation" className={`hover:underline w-full md:w-auto ${isActive("/foundation") ? "text-orange-700" : ""}`}>
               ថ្នាក់ឆ្នាំសិក្សាមូលដ្ឋាន
             </a>
-            <a href="/contact" className="text-orange-700 hover:underline w-full md:w-auto">
+            <a href="/contact" className={`hover:underline w-full md:w-auto ${isActive("/contact") ? "text-orange-700" : ""}`}>
               ព៍ត៌មានបន្ថែម
-            </a> <br />
-            <a href="/skillwithquestionandratings" className="text-orange-700 hover:underline w-full md:w-auto">
+            </a>
+            <a href="/skillwithquestionandratings" className={`hover:underline w-full md:w-auto ${isActive("/skillwithquestionandratings") ? "text-orange-700" : ""}`}>
               ស្តង់មតិ
             </a>
           </div>
